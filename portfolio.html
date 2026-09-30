@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ishaan | Video Editor & Clipper, Founder of DNA Media</title>
+<meta name="description" content="Short-form video editor and clipper. 20M+ views generated across YouTube Shorts and streamer clips. Founder of DNA Media.">
+<meta property="og:title" content="Ishaan | Video Editor & Clipper">
+<meta property="og:description" content="20M+ views generated across YouTube Shorts and streamer clips.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E1016;--panel:#171A23;--panel2:#1F2330;--ink:#F3F4F8;--muted:#9BA1B5;--line:#2A2F3F;--acc:#FF5A36;--ok:#3DDC97;
+--display:'Bricolage Grotesque',system-ui,sans-serif;--body:'Instrument Sans',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.02em}
+section{padding:88px 0}
+.tag{font-size:14px;color:var(--acc);font-weight:600;margin-bottom:10px}
+h2{font-size:clamp(32px,5vw,54px);font-weight:800;margin-bottom:12px}
+.sub{color:var(--muted);max-width:54ch;margin-bottom:44px}
+.btn{display:inline-block;background:var(--acc);color:#fff;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:999px;border:2px solid var(--acc);cursor:pointer;font:600 16px var(--body)}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.sm{padding:9px 18px;font-size:15px}
+
+/* loader */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:99;display:grid;place-content:center;text-align:center;transition:opacity .4s}
+#loader b{font:800 clamp(56px,14vw,120px)/1 var(--display)}
+#loader span{color:var(--muted)}
+#loader.done{opacity:0;pointer-events:none}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:20;background:rgba(14,16,22,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{font:800 20px var(--display);text-decoration:none}
+.logo small{display:block;font:500 11px var(--body);color:var(--muted);margin-top:-2px}
+.links{display:flex;gap:26px}
+.links a{text-decoration:none;color:var(--muted);font-size:15px}
+.links a:hover{color:var(--ink)}
+.avail{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.avail::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(61,220,151,.18)}
+@media(max-width:860px){.links,.avail{display:none}}
+
+/* hero */
+.hero{padding:72px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(42px,7vw,84px);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero p{color:var(--muted);font-size:19px;max-width:46ch;margin:22px 0 30px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.plats{margin-top:32px;color:var(--muted);font-size:15px}
+.plats b{color:var(--ink);font-weight:600}
+.phone{position:relative;justify-self:center;width:min(300px,100%);aspect-ratio:9/16;border-radius:34px;background:var(--panel);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;justify-content:flex-end}
+.phone .big{font:800 72px/1 var(--display)}
+.phone .lbl{color:var(--muted);margin-top:6px}
+.phone .bars{display:flex;gap:6px;align-items:flex-end;height:120px;margin-bottom:22px}
+.phone .bars i{flex:1;background:var(--panel2);border-radius:6px}
+.phone .bars i:nth-child(odd){background:var(--acc)}
+.chip{position:absolute;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:14px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.chip.a{top:36px;left:-34px}.chip.b{bottom:96px;right:-30px;color:var(--acc)}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.chip.a{left:-8px}.chip.b{right:-8px}}
+
+/* results */
+.res{display:grid;gap:14px}
+.row{display:grid;grid-template-columns:120px 1fr 90px;gap:16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 20px}
+.row .bar{height:12px;border-radius:99px;background:var(--panel2);overflow:hidden}
+.row .bar i{display:block;height:100%;width:0;background:var(--acc);border-radius:99px;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.row strong{font:800 24px var(--display);text-align:right}
+.total{margin-top:24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-top:2px solid var(--ink);padding-top:18px}
+.total strong{font:800 clamp(40px,7vw,72px)/1 var(--display);color:var(--acc)}
+@media(max-width:560px){.row{grid-template-columns:1fr 70px}.row .bar{grid-column:1/-1;order:3}}
+
+/* services */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px}
+.card .ic{font-size:30px;margin-bottom:14px}
+.card h3{font-size:24px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:16px;margin-bottom:14px}
+.card ul{list-style:none;padding:0;font-size:15px}
+.card li{padding:6px 0;border-top:1px solid var(--line)}
+.card li::before{content:"✓";color:var(--ok);margin-right:10px}
+
+/* work */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.tabs button{background:var(--panel);color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:8px 18px;font:500 15px var(--body);cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.clip{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:14px}
+.frame{aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000}
+.frame iframe{width:100%;height:100%;border:0;display:block}
+.clip .meta{display:flex;justify-content:space-between;align-items:baseline;padding:14px 6px 4px}
+.clip .v{font:800 30px var(--display)}
+.clip .v small{font:500 14px var(--body);color:var(--muted);margin-left:6px}
+.clip a{font-size:14px;color:var(--acc);font-weight:600}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;counter-reset:s}
+.step{border-top:2px solid var(--acc);padding-top:18px;counter-increment:s}
+.step::before{content:counter(s);font:800 36px var(--display);color:var(--acc)}
+.step h3{font-size:22px;margin:6px 0}
+.step p{color:var(--muted);font-size:16px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.3fr .7fr;gap:48px}
+.about p{color:var(--muted);margin-bottom:16px;max-width:60ch}
+blockquote{border-left:3px solid var(--acc);padding-left:18px;margin-top:24px;font:500 20px/1.4 var(--display)}
+.facts{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:24px;align-self:start}
+.facts div{padding:12px 0;border-bottom:1px solid var(--line)}
+.facts div:last-child{border:0}
+.facts small{display:block;color:var(--muted);font-size:13px}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:48px}
+.contact ul{list-style:none;padding:0;margin:20px 0}
+.contact li{padding:5px 0;color:var(--muted)}
+.contact li::before{content:"✓";color:var(--ok);margin-right:10px}
+.direct a{display:block;padding:8px 0;text-decoration:none;font-weight:600}
+form{display:grid;gap:12px}
+label{font-size:14px;color:var(--muted)}
+input,textarea{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:400 16px var(--body)}
+textarea{min-height:120px;resize:vertical}
+form small{color:var(--muted)}
+@media(max-width:860px){.contact{grid-template-columns:1fr;padding:28px}}
+footer{padding:40px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="loader"><b id="pct">0%</b><span>Loading portfolio</span></div>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">Ishaan<small>DNA Media</small></a>
+  <nav class="links" aria-label="Main"><a href="#results">Results</a><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#about">About</a></nav>
+  <span class="avail">Available for projects</span>
+  <a class="btn sm" href="#contact">Let's talk</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div>
+    <p class="tag">Video editor &amp; clipper</p>
+    <h1>I turn raw footage into <em>millions</em> of views.</h1>
+    <p>I edit and clip short-form video for streamers, creators and agencies, with hooks, pacing and captions built to keep people watching.</p>
+    <div class="cta"><a class="btn" href="#work">View my work</a><a class="btn alt" href="#results">See results</a></div>
+    <p class="plats"><b>Platforms:</b> YouTube Shorts, Instagram Reels, TikTok</p>
+  </div>
+  <div class="phone" aria-label="Best clip: 4.4 million views">
+    <span class="chip a">DNA Media</span><span class="chip b">20M+ views</span>
+    <div class="bars" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:40%"></i><i style="height:80%"></i><i style="height:60%"></i><i style="height:100%"></i></div>
+    <div class="big">4.4M</div><div class="lbl">views on my best Short</div>
+  </div>
+</div></section>
+
+<section id="results"><div class="wrap">
+  <p class="tag">Results</p><h2>The numbers behind the edits</h2>
+  <p class="sub">Views generated on three of my Shorts, and the total across everything I've edited.</p>
+  <div class="res" id="res"></div>
+  <div class="total"><span>Total views generated across all clips</span><strong>20M+</strong></div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <p class="tag">Services</p><h2>What I do best</h2>
+  <p class="sub">Short-form editing, from finding the moment to publishing-ready files.</p>
+  <div class="cards">
+    <div class="card"><div class="ic">🎮</div><h3>Streamer clipping</h3><p>I find the best moments in long streams and turn them into vertical clips that get shared.</p><ul><li>Kick &amp; Twitch highlights</li><li>Moment selection</li><li>Captions and framing</li></ul></div>
+    <div class="card"><div class="ic">🎬</div><h3>Short-form editing</h3><p>Fast, clean edits for YouTube Shorts, Reels and TikTok, built around the first second.</p><ul><li>Hooks and pacing</li><li>Subtitles and sound design</li><li>Platform-ready export</li></ul></div>
+    <div class="card"><div class="ic">📈</div><h3>Clipping campaigns</h3><p>Ongoing clip output for agencies and channels that want steady views every month.</p><ul><li>Daily or weekly delivery</li><li>Titles and hashtags</li><li>Performance tracking</li></ul></div>
+  </div>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <p class="tag">Portfolio</p><h2>Featured work</h2>
+  <p class="sub">Real Shorts I edited. Press play to watch.</p>
+  <div class="tabs" id="tabs" role="group" aria-label="Filter work"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="process"><div class="wrap">
+  <p class="tag">Process</p><h2>How I work</h2>
+  <p class="sub">A simple four-step workflow, so you always know what's next.</p>
+  <div class="steps">
+    <div class="step"><h3>Brief</h3><p>You share your channel, footage and goals. I confirm style, length and platforms.</p></div>
+    <div class="step"><h3>Find the moments</h3><p>I go through the footage and pick the parts most likely to hold attention.</p></div>
+    <div class="step"><h3>Edit</h3><p>Hook, cuts, captions and sound, then a draft for your feedback.</p></div>
+    <div class="step"><h3>Deliver &amp; track</h3><p>Final files with titles and hashtags, then I review how each clip performs.</p></div>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap about">
+  <div>
+    <p class="tag">About</p><h2>The edit behind the views</h2>
+    <p>I'm Ishaan, founder of DNA Media. I edit and clip short-form video, and my clips have generated over 20 million views.</p>
+    <p>I care about what makes people stop scrolling and keep watching: a strong first second, tight pacing and captions that are easy to read. Every clip is built around that.</p>
+    <blockquote>I don't just cut videos. I build clips that people finish and share.</blockquote>
+  </div>
+  <div class="facts">
+    <div><small>Company</small>DNA Media</div>
+    <div><small>Focus</small>Short-form editing and clipping</div>
+    <div><small>Platforms</small>YouTube Shorts, Reels, TikTok</div>
+    <div><small>Availability</small>Open to projects</div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <p class="tag">Contact</p><h2>Let's build something great</h2>
+  <div class="contact">
+    <div>
+      <h3 style="font-size:28px">Ready to get more views?</h3>
+      <ul><li>Free discovery chat</li><li>Clear timeline and price</li><li>Fast replies</li></ul>
+      <div class="direct">
+        <a href="mailto:ishaanjunejareal@gmail.com">Email: ishaanjunejareal@gmail.com</a>
+      </div>
+    </div>
+    <form id="form">
+      <div><label for="n">Name</label><input id="n" required></div>
+      <div><label for="e">Email</label><input id="e" type="email" required></div>
+      <div><label for="s">Subject</label><input id="s"></div>
+      <div><label for="m">Message</label><textarea id="m" required></textarea></div>
+      <button class="btn" type="submit">Send message</button>
+      <small>This opens your email app with the message filled in.</small>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<div class="wrap"><footer><span>&copy; <span id="yr"></span> Ishaan. All rights reserved.</span><span>Founder of DNA Media</span></footer></div>
+
+<script>
+// EDIT HERE. To add a video: add a line with the Shorts ID (the part after /shorts/), views, and a category.
+const videos=[
+  {id:"6bGE0XfNqwk",views:"4.4M",n:4400000,cat:"Shorts"},
+  {id:"pO6VWcD3qVI",views:"400K+",n:400000,cat:"Shorts"},
+  {id:"iQVRY3ImdXg",views:"250K+",n:250000,cat:"Shorts"}
+];
+const CONTACT_EMAIL="ishaanjunejareal@gmail.com";
+
+// loader
+(function(){const l=document.getElementById("loader"),p=document.getElementById("pct");let v=0;
+ const t=setInterval(()=>{v=Math.min(100,v+8);p.textContent=v+"%";if(v>=100){clearInterval(t);l.classList.add("done")}},40);})();
+
+// results bars
+const res=document.getElementById("res"),max=Math.max(...videos.map(v=>v.n));
+res.innerHTML=videos.map((v,i)=>`<div class="row"><span>Short ${i+1}</span><div class="bar"><i data-w="${v.n/max*100}"></i></div><strong>${v.views}</strong></div>`).join("");
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){res.querySelectorAll("i").forEach(b=>b.style.width=b.dataset.w+"%");o.disconnect()}})).observe(res);
+
+// work grid + filter tabs
+const grid=document.getElementById("grid"),tabs=document.getElementById("tabs");
+function show(cat){
+  grid.innerHTML=videos.filter(v=>cat==="All"||v.cat===cat).map(v=>`<article class="clip"><div class="frame"><iframe loading="lazy" title="Short with ${v.views} views" src="https://www.youtube-nocookie.com/embed/${v.id}?rel=0&playsinline=1" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="meta"><div class="v">${v.views}<small>views</small></div><a href="https://www.youtube.com/shorts/${v.id}" target="_blank" rel="noopener">Open on YouTube</a></div></article>`).join("");
+  tabs.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===cat));
+}
+const cats=["All",...new Set(videos.map(v=>v.cat))];
+if(cats.length>2){tabs.innerHTML=cats.map(c=>`<button data-c="${c}">${c}</button>`).join("");tabs.onclick=e=>e.target.dataset.c&&show(e.target.dataset.c)}else tabs.remove();
+show("All");
+
+// contact form -> mailto (GitHub Pages has no server)
+document.getElementById("form").onsubmit=e=>{e.preventDefault();
+  const g=id=>document.getElementById(id).value;
+  location.href=`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(g("s")||"Project enquiry from "+g("n"))}&body=${encodeURIComponent(g("m")+"\n\nFrom: "+g("n")+" ("+g("e")+")")}`;
+};
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
